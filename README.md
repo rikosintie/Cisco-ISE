@@ -22,7 +22,8 @@
 * [ISE End of Life Notices](cs.co/ise-eol)  
 * [ISE NAC Forum](https://cs.co/nac-community)  
 
-  
+
+[Cisco ISE Webinars and Training Videos](https://learningnetwork.cisco.com/s/learning-plan-detail-standard?ltui__urlRecordId=a1c3i0000005e3uAAA&ltui__urlRedirect=learning-plan-detail-standard) - 59 hours of ISE training!
 
 
 ## What Supports ISE Guest Access
