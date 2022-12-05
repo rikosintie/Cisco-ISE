@@ -4,6 +4,7 @@
 
 * [Cisco ISE resources](https://cs.co/ise/ise-resources) - ISE Resources on Cisco's site  
 * [ISE Getting Started page](https://www.cisco.com/c/m/en_us/products/security/identity-services-engine/getting-started.html) - Every resouce needed to deploy ISE!
+* [Cisco Identity Services Engine (ISE) Set Up](https://cs.co/ise-cx)  
 * [Cisco ISE 3rd party RADIUS Dictinaries](https://cs.co/ise/ise-resources#DeviceAdmin) - Dictionaries for 3rd party RADIUS servers
 * [Cisco ISE community](https://cs.co/ise/ise-community) - The Cisco ISE Community Homepage
 * [Cisco ISE Webinars](https://cs.co/ise-webinars) - Upcoming and Recorded Webinars & Training Videos  
@@ -18,7 +19,11 @@
 * [ISE Design and Integration Guides](https://ise-guides) 
 * [ISE Licensiing Guide](https://co.cs/ise-licensing)  
 * [Free 90 day ISE Evaluations](https://cs.co/ise-eval)  
-* [ISE End of Life Notices](cs.co/ise-eol)    
+* [ISE End of Life Notices](cs.co/ise-eol)  
+* [ISE NAC Forum](https://cs.co/nac-community)  
+
+  
+
 
 ## What Supports ISE Guest Access
 Platforms  
@@ -51,11 +56,13 @@ Platforms
 
 
 ## Profiling
-Under Setings, Profiling
+Under Settings, Profiling,  
 You can run NMAP scans from the profiling service
 [NMAP](https://www.cisco.com/c/en/us/td/docs/security/ise/2-4/admin_guide/b_ISE_admin_guide_24/m_cisco_ise_endpoint_profiling_policies.html#concept_57A4A7ADE3DA429A821900C5CBEA8BF0)  
 
-for NMAP, comma separated of subnets or IPs. Field will be cleared on successful, saved change
+for NMAP, comma separated of subnets or IPs. 
+
+Field will be cleared on successful, saved change
 
 ## PxGrid
 * AMP - Advanced Malware Protection
@@ -68,16 +75,16 @@ for NMAP, comma separated of subnets or IPs. Field will be cleared on successful
 * WSA - Cisco Web Security Appliance - Context based Web Filtering
 
 
-**Authentcation**  
+### Authentcation  
 * [Self Signed pxGrid Client and pxGrid ISE Node certificates](https://communities.cisco.com/docs/DOC-68286)  
 * [CA Signed pxGrid Client and pxGrid ISE Node certificates](https://communities.cisco.com/docs/DOC-68287)  
 
-**Develop PxGrid apps**  
+### Develop PxGrid apps  
 pxGrid is based on the ieee XMPP protocol. You can develop your own in house applications using the developer tools.  
 [Developer tools](https://developer.cisco.com/site/pxgrid)  
 
-ISE & Infoblox - Use ANC to share info with Infoblox  
-ISE & Checkpoint - Use ISE identity/device & TrustSec context
+ISE & Infoblox - Use Adaptive Network Contro (ANC) to share info with Infoblox  
+ISE & Checkpoint - Use ISE identity/device & TrustSec context  
 	* Firewall  
 	* Application control  
 	* DLP  
@@ -87,13 +94,13 @@ ISE & Stealthwatch - provides context to Stealwatch using pxGrid API. Not an aut
 ISE & Splunk - uses syslog to provide contextual threat mitigation  
 
 
-**Threat Detection**  
+### Threat Detection  
 * Industry Time to Detection (TTD) 100 - 200 days.  
 
-### Rapid Threat Containment Overview  
+**Rapid Threat Containment Overview**  
 * Context Exchange (pxGrid / API / Syslog )
 * ANC/EPS Mitigation - pxGrid gets policy from subscriber
-* THreat Centric NAC - ISE has the policy, gets data from subscriber
+* Threat Centric NAC - ISE has the policy, gets data from subscriber
 
 **EPS / ANC Mitigation actions**
 * Apply ANC with pxGrid reduce TTD to minutes not 100 days.  
@@ -106,14 +113,14 @@ ISE & Splunk - uses syslog to provide contextual threat mitigation
  Requires ISE Apex License. Runs on PSN.  
  Collect contextual information and then make a descision.
  
- **Supported Products**
+ **Supported Products**  
  * Tenable  
  * Qualys  
  * Cisco Threat Analytics  
  * Rapid7  
  * Cisco AMP
  
-**WHat does it do?**  
+**What does it do?**  
 * Creates ISE authorization policies based on threat and vulnerability attributes.  
 * Use some solution to detect that an endpoint is vulnerable. Let ISE know of the vulnerabilty. Rapid7, Cisco AMP, Qualys, etc. for detecting vulnerabilities.
 * Will show comprimised and vulnerable endpoints in ISE  
@@ -358,6 +365,25 @@ Use the "Endpoint Profile" filter with "Unknown"
 * Custom Profiles  
 
 
+## Profiling Enhancments  
+Impact of Endpoint PRofiling Ownership Changes
+Device moves on the network, you end up with ownership contention.  
+
+**What are we solving (ISE 2.7+)**  
+Multiple PSNs receive endpoint information from teh network causing endpoint onwership changes leading to contention.  
+
+**How**  
+* PSN becomes an owner and announces ownesip to other PSNs. Probe updates are received from PSNs using secure APIs.  
+* Using RabbitMQ that enhances reliability and scale (10K to 200K)  
+* Block profile cahnges for manually updated endponts.  
+
+Both are enabled by default!  
+
+Stopped at lesson 5 of visiblity and Profiling
+
+
+
+
 
 
 
@@ -366,6 +392,7 @@ Use the "Endpoint Profile" filter with "Unknown"
 
 
 [Compatible ISE Vesions](https://www.cisco.com/c/en/us/td/docs/cloud-systems-management/network-automation-and-management/dna-center/1-2/install/b_dnac_install_1_2/b_dnac_install_1_2_chapter_0101.html?bookSearch=true#reference_wtq_lkk_tdb)
+
 
 
 
